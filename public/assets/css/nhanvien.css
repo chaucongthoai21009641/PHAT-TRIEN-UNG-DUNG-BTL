@@ -1,0 +1,21 @@
+/* .editable-cell {
+    position: relative;
+    padding-right: 25px;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    display: none;
+}
+
+.editable-cell:hover .edit-icon {
+    display: inline-block;
+}
+
+.editable-cell:hover .field-value {
+    text-decoration: underline;
+} */
