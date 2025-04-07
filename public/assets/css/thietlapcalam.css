@@ -1,7 +1,0 @@
-.table-responsive {
-    max-height: 70vh; /* Giới hạn chiều cao để cuộn nếu quá dài */
-    max-width: 80vw;
-    overflow-y: auto; /* Cuộn theo chiều dọc */
-    overflow-x: auto; /* Cuộn theo chiều ngang */
-    white-space: nowrap;
-}
