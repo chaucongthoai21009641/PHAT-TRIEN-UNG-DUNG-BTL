@@ -2,8 +2,8 @@
 header('Access-Control-Allow-Origin:*');
 header('Content-Type: application/json');
 
-include_once '../../config/database.php'; // Import file database
-include_once '../../models/hopthoai.php'; // Import file database
+include_once '../../config/database.php';
+include_once '../../models/hopthoai.php';
 
 $db = new Database();
 $conn = $db->connect();

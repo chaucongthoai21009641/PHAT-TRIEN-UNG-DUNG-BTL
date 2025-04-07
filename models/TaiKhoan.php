@@ -34,7 +34,15 @@ class TaiKhoan
     }
 
     // Thêm tài khoản mới
-    public function create($data)
+    public function insertUpDel($sql)
+    {
+        if ($sql->execute())
+            return 1;
+        else
+            return 0;
+    }
+
+    public function them($data)
     {
         $sql = "INSERT INTO $this->table (tenTaiKhoan, matKhau, quyenHan) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);

@@ -1,17 +1,17 @@
 <?php
 
 require_once '../core/Route.php';
-require_once '../app/controllers/NhanVienController.php';
-require_once '../app/controllers/LuongController.php';
-require_once '../app/controllers/ThanhToanController.php';
-require_once '../app/controllers/TaiKhoanController.php';
-require_once '../app/controllers/HopThoaiController.php';
-require_once '../app/controllers/ThongBaoController.php';
-require_once '../app/controllers/TaiLieuController.php';
-require_once '../app/controllers/CaLamController.php';
-require_once '../app/controllers/ChiTietCaLamController.php';
-require_once '../app/controllers/NgayLeController.php';
-require_once '../app/controllers/LichLamViecController.php';
+// require_once '../app/controllers/NhanVienController.php';
+// require_once '../app/controllers/LuongController.php';
+// require_once '../app/controllers/ThanhToanController.php';
+// require_once '../app/controllers/TaiKhoanController.php';
+// require_once '../app/controllers/HopThoaiController.php';
+// require_once '../app/controllers/ThongBaoController.php';
+// require_once '../app/controllers/TaiLieuController.php';
+// require_once '../app/controllers/CaLamController.php';
+// require_once '../app/controllers/ChiTietCaLamController.php';
+// require_once '../app/controllers/NgayLeController.php';
+// require_once '../app/controllers/LichLamViecController.php';
 
 // Api nhân viên
 Route::prefix('/api/nhanvien', function () {

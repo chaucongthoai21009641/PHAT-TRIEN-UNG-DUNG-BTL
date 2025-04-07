@@ -1,5 +1,5 @@
 <!-- Nút Thêm thông báo -->
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addThongBaoModal">
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#thongBaoModal">
     Thêm thông báo
 </button>
 
@@ -19,36 +19,36 @@
     </tbody>
 </table>
 
-<!-- Modal Thêm thông báo -->
-<div class="modal fade" id="addThongBaoModal" tabindex="-1" aria-labelledby="addThongBaoModalLabel" aria-hidden="true">
+<!-- Modal Thêm/Sửa thông báo -->
+<div class="modal fade" id="thongBaoModal" tabindex="-1" aria-labelledby="thongBaoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addThongBaoForm">
-                <input type="hidden" id="addThongBaoId">
+            <form id="thongBaoForm">
+                <input type="hidden" id="thongBaoId">
                 <div class="modal-header">
-                    <h5 class="modal-title">Thêm thông báo</h5>
+                    <h5 class="modal-title" id="modalTitle">Thêm thông báo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="tieuDeThongBao" class="form-label"><span class="text-danger">*</span> Tiêu đề</label>
-                        <input type="text" class="form-control" id="tieuDeThongBao" required>
+                        <input type="text" class="form-control" id="tieuDeThongBao" name="tieuDeThongBao" required>
                     </div>
                     <div class="mb-3">
                         <label for="urlThongBao" class="form-label"><span class="text-danger">*</span> URL</label>
-                        <input type="url" class="form-control" id="urlThongBao" required>
+                        <input type="url" class="form-control" id="urlThongBao" name="urlThongBao" required>
                     </div>
                     <div class="mb-3">
                         <label for="thoigianThongBao" class="form-label"><span class="text-danger">*</span> Thời gian</label>
                         <div class="input-group">
-                            <input type="text" class="form-control thoigian-picker" id="thoigianThongBao" required>
+                            <input type="text" class="form-control thoigian-picker" id="thoigianThongBao" name="thoigianThongBao" required>
                             <span class="input-group-text"><i class="bi bi-calendar"></i></span>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button type="submit" class="btn btn-primary">Thêm</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Thêm</button>
                 </div>
             </form>
         </div>

@@ -5,6 +5,7 @@ class NhanVien
     private $conn;
     private $table = "nhanvien";
     private $table_taikhoan = "taikhoan";
+    private $table_luong = "luong";
 
     private $maNV = "maNV";
     private $hoTen = "hoTen";
@@ -18,6 +19,7 @@ class NhanVien
     private $trangThai = "trangThai";
 
     private $maTK = "maTK";
+    private $maLuong = "maLuong";
 
     public function __construct($db)
     {
@@ -35,6 +37,14 @@ class NhanVien
 
         $stmt->execute();
         return $stmt->get_result();
+    }
+
+    public function insertUpDel($sql)
+    {
+        if ($sql->execute())
+            return 1;
+        else
+            return 0;
     }
 
 

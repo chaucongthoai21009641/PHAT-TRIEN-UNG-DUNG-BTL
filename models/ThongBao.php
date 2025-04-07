@@ -15,12 +15,27 @@ class ThongBao
         $this->conn = $db;
     }
 
-    // Lấy tất cả tài khoản
     public function selectAll()
     {
         $query = "SELECT * FROM $this->table ORDER BY $this->maTB DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->get_result();
+    }
+    // Lấy 1 thông báo
+    public function selectOne($maTB)
+    {
+        $query = "SELECT * FROM $this->table WHERE $this->maTB = $maTB LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    public function insertUpDel($sql)
+    {
+        if ($sql->execute())
+            return 1;
+        else
+            return 0;
     }
 }

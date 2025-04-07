@@ -6,78 +6,10 @@
     <title>Quản lý hộp thoại</title>
 </head>
 <body>
-    <!-- Nút Thêm hộp thoại -->
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addHopThoaiModal">
-        Thêm hộp thoại
-    </button>
 
-    <div id="hopthoai_container" class="row">
-    <!-- Dữ liệu sẽ được đổ vào đây bằng AJAX -->
-    </div>
+<a href="" class="btn btn-primary mb-3">Thêm hộp thoại</a>
 
-    <!-- Modal Thêm tài liệu -->
-    <div class="modal fade" id="addHopThoaiModal" tabindex="-1" aria-labelledby="addHopThoaiModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="addHopThoaiForm">
-                    <input type="hidden" id="addHopThoaiId">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Thêm hộp thoại</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="hopThoaiTieuDe" class="form-label">
-                                <span class="text-danger">*</span> Tiêu đề
-                            </label>
-                            <input type="text" class="form-control" id="hopThoaiTieuDe" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="hopThoaiNoiDung" class="form-label">
-                                <span class="text-danger">*</span> Nội dung
-                            </label>
-                            <input type="text" class="form-control" id="hopThoaiNoiDung" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="hopThoaiTgBatDau" class="form-label">
-                                Thời gian bắt đầu
-                            </label>
-                            <input type="datetime-local" class="form-control" id="hopThoaiTgBatDau">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="hopThoaiTgKetThuc" class="form-label">
-                                Thời gian kết thúc
-                            </label>
-                            <input type="datetime-local" class="form-control" id="hopThoaiTgKetThuc">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                        <button type="submit" class="btn btn-primary">Thêm</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-<!--<a href="" class="btn btn-primary mb-3">Thêm hộp thoại</a>
-
-<div id="hopthoai_container" class="row"> -->
+<div id="hopthoai_container" class="row">
     <!-- Dữ liệu sẽ được đổ vào đây bằng AJAX -->
 </div> 
 

@@ -26,4 +26,12 @@ class HopThoai
         $stmt->execute();
         return $stmt->get_result();
     }
+
+    public function insertUpDel($sql)
+    {
+        if ($sql->execute())
+            return 1;
+        else
+            return 0;
+    }
 }

@@ -9,34 +9,88 @@ $(document).ready(function () {
     new bootstrap.Modal($("#addEmployeeModal")).show()
   );
 
+  // $("#addEmployeeForm").on("submit", function (e) {
+  //   e.preventDefault();
+  //   $.post({
+  //     url: "http://localhost/prjhrmthuan/api/NhanVien/insertnhanvien.php",
+  //     headers: { "X-CSRF-TOKEN": csrfToken },
+  //     data: { tenTaiKhoan: $("#taiKhoan").val(), matKhau: $("#matKhau").val() },
+  //     success: () => {
+  //       alert("Thêm nhân viên thành công!");
+  //       $("#addEmployeeModal").modal("hide");
+  //       loadEmployees();
+  //     },
+  //     error: () => alert("Thêm nhân viên thất bại!"),
+  //   });
+  // });
+
   $("#addEmployeeForm").on("submit", function (e) {
     e.preventDefault();
-    $.post({
-      url: "http://localhost/prjhrmthuan/api/taikhoan/taikhoan.php",
-      headers: { "X-CSRF-TOKEN": csrfToken },
-      data: { tenTaiKhoan: $("#taiKhoan").val(), matKhau: $("#matKhau").val() },
-      success: () => {
+
+    $.ajax({
+      url: "http://localhost/prjhrmthuan/api/NhanVien/insertnhanvien.php",
+      method: "POST",
+      data: {
+        tenTaiKhoan: $("#taiKhoan").val(),
+        matKhau: $("#matKhau").val(),
+      },
+      success: function (res) {
         alert("Thêm nhân viên thành công!");
         $("#addEmployeeModal").modal("hide");
         loadEmployees();
       },
-      error: () => alert("Thêm nhân viên thất bại!"),
+      error: function (xhr, status, error) {
+        alert("Thêm nhân viên thất bại!");
+        console.log("Lỗi:", xhr.responseText);
+      },
     });
   });
 
+  // $("#editFieldForm").on("submit", function (e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url: `http://127.0.0.1:8000/api/nhanvien/${$("#editRecordId").val()}`,
+  //     type: "PUT",
+  //     headers: { "X-CSRF-TOKEN": csrfToken },
+  //     data: { [$("#editFieldName").val()]: $("#fieldValue").val() },
+  //     success: () => {
+  //       alert("Cập nhật thành công!");
+  //       $("#editFieldModal").modal("hide");
+  //       loadEmployees();
+  //     },
+  //     error: () => alert("Cập nhật thất bại!"),
+  //   });
+  // });
+
   $("#editFieldForm").on("submit", function (e) {
     e.preventDefault();
+
+    const maNV = $("#editRecordId").val(); // Lấy giá trị mã nhân viên
+    const fieldName = $("#editFieldName").val(); // Lấy tên trường cần sửa
+    const fieldValue = $("#fieldValue").val(); // Lấy giá trị trường cần sửa
+
     $.ajax({
-      url: `http://127.0.0.1:8000/api/nhanvien/${$("#editRecordId").val()}`,
+      url: `http://localhost/prjhrmthuan/api/nhanvien/updatenhanvien.php`, // Cập nhật đúng URL API
       type: "PUT",
-      headers: { "X-CSRF-TOKEN": csrfToken },
-      data: { [$("#editFieldName").val()]: $("#fieldValue").val() },
+      contentType: "application/json", // Gửi dưới dạng JSON
+      headers: {
+        "X-CSRF-TOKEN": csrfToken, // CSRF token nếu có
+      },
+      data: JSON.stringify({
+        maNV: maNV, // Mã nhân viên
+        fieldName: fieldName, // Tên trường cần sửa
+        fieldValue: fieldValue, // Giá trị mới của trường
+      }), // Dữ liệu gửi đi theo định dạng JSON
+
       success: () => {
         alert("Cập nhật thành công!");
         $("#editFieldModal").modal("hide");
-        loadEmployees();
+        loadEmployees(); // Tải lại danh sách nhân viên
       },
-      error: () => alert("Cập nhật thất bại!"),
+      error: (xhr, status, error) => {
+        console.log("Error:", xhr.responseText); // Log lỗi chi tiết từ server
+        alert("Cập nhật thất bại!");
+      },
     });
   });
 });
@@ -156,14 +210,26 @@ function bindEditableCells() {
 
 $(document).on("click", ".change-status", function (e) {
   e.preventDefault();
+
+  const maNV = $(this).data("id"); // Lấy mã nhân viên
+  const trangThai = $(this).data("status"); // Lấy trạng thái mới (1 hoặc 0)
+
   $.ajax({
-    url: `http://127.0.0.1:8000/api/nhanvien/${$(this).data("id")}`,
+    url: `http://localhost/prjhrmthuan/api/nhanvien/updatenhanvien.php`, // URL API đúng
     type: "PUT",
-    headers: { "X-CSRF-TOKEN": csrfToken },
-    data: { trangThai: $(this).data("status") },
+    contentType: "application/json", // Gửi dữ liệu dưới dạng JSON
+    headers: {
+      "X-CSRF-TOKEN": csrfToken, // CSRF token nếu có
+    },
+    data: JSON.stringify({
+      maNV: maNV, // Mã nhân viên
+      fieldName: "trangThai", // Trường cần sửa (ở đây là trạng thái)
+      fieldValue: trangThai, // Giá trị mới của trường trạng thái (1 hoặc 0)
+    }), // Gửi dữ liệu dưới dạng JSON
+
     success: () => {
       alert("Cập nhật trạng thái thành công!");
-      loadEmployees();
+      loadEmployees(); // Tải lại danh sách nhân viên
     },
     error: () => alert("Cập nhật trạng thái thất bại!"),
   });
